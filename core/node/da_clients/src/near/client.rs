@@ -1,13 +1,8 @@
-use anyhow::anyhow;
-use async_trait::async_trait;
 use std::{fmt::Debug, sync::Arc};
 
-use near_primitives::borsh;
-
-use zksync_da_client::{
-    types::{self, DAError},
-    DataAvailabilityClient,
-};
+use async_trait::async_trait;
+use zksync_config::NearConfig;
+use zksync_da_client::{types, DataAvailabilityClient};
 
 use crate::{
     near::{
@@ -16,8 +11,6 @@ use crate::{
     },
     utils::to_non_retriable_da_error,
 };
-
-use zksync_config::NearConfig;
 
 #[derive(Clone)]
 pub struct NearClient {
